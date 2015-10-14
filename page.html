@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <table border="1" class="search-grid-table " id="search-grid-table" tabindex="0">
+    <thead>
+      <tr>
+        <th align="center"></th>
+        <th align="center"></th>
+        <th align="center"></th>
+      </tr>
+    </thead>
+    <tbody class="staggered-bg" style="position:relative;">
+    </tbody>
+  </table>
+
+  <script src="improved-tables.js">
+
+
+  </script>
+  <script>
+    /*SAMPLE DATA*/
+    var searchData = [
+      {colItemCode: '1', colItemName: 'Test Item', colPrice: 35},
+      {colItemCode: 'FJ48', colItemName: 'Foo Bar', colPrice: 322},
+      {colItemCode: 'BAR', colItemName: 'Fizz', colPrice: 0}
+    ];
+
+    var searchGridCols = [];
+    searchGridCols[0] = gridTableMakeCol('colItemCode', 'Item Code', 'string');
+    searchGridCols[1] = gridTableMakeCol('colItemName', 'Item Name', 'string');
+    searchGridCols[2] = gridTableMakeCol('colPrice', 'Price', 'number')
+
+    var searchGrid = new GridTable('#search-grid-table', searchGridCols);
+
+    for (i in searchData) {
+      searchGrid.addRow(searchData[i]);
+    }
+    searchGrid.renderRows();
+  </script>
+</body>
+</html>
